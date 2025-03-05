@@ -3,16 +3,7 @@ import Button from "@mui/material/Button";
 import { useReducer } from "react";
 import { range, shuffle } from "remeda";
 import { RandomizeResult } from "./RandomizeResult.tsx";
-import {
-  COMPLEXITIES,
-  type Complexity,
-  EXPANSIONS,
-  type Expansion,
-  SPIRITS,
-  type Spirit,
-  allComplexities,
-  allExpansions,
-} from "../data.ts";
+import { Complexity, Expansion, Spirit } from "../data.ts";
 import { SetCheckboxes } from "./SetCheckboxes.tsx";
 import { IntSlider } from "./IntSlider.tsx";
 
@@ -50,8 +41,8 @@ export function App() {
   const [state, dispatch] = useReducer(reducer, {
     numPlayers: 2,
     spiritsPerPlayer: 3,
-    expansions: new Set(allExpansions()),
-    complexities: new Set(allComplexities()),
+    expansions: new Set(Expansion.ALL),
+    complexities: new Set(Complexity.ALL),
     randomizedSet: null,
   });
 
@@ -60,10 +51,10 @@ export function App() {
       <RandomizeResult spirits={state.randomizedSet} />
     );
 
-  const filteredSpirits = Object.keys(SPIRITS).filter(
+  const filteredSpirits = Spirit.ALL.filter(
     (spirit) =>
-      state.expansions.has(SPIRITS[spirit].expansion) &&
-      state.complexities.has(SPIRITS[spirit].complexity),
+      state.expansions.has(spirit.expansion) &&
+      state.complexities.has(spirit.complexity),
   );
   const enoughSpirits =
     filteredSpirits.length >= state.numPlayers * state.spiritsPerPlayer;
@@ -100,14 +91,14 @@ export function App() {
 
       <Box sx={{ mt: 2 }}>
         <SetCheckboxes
-          items={Object.entries(EXPANSIONS) as [Expansion, string][]}
+          items={Expansion.ALL}
           set={state.expansions}
           actionType="updateExpansions"
           label="Expansions"
           dispatch={dispatch}
         />
         <SetCheckboxes
-          items={Object.entries(COMPLEXITIES) as [Complexity, string][]}
+          items={Complexity.ALL}
           set={state.complexities}
           actionType="updateComplexities"
           label="Complexities"

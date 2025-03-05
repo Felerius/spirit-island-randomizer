@@ -7,33 +7,40 @@ import {
 } from "@mui/material";
 import type { ChangeEvent, Dispatch, JSX } from "react";
 
+interface Item {
+  id: string;
+  name: string;
+}
+
 interface Props<T, S extends string> {
-  items: [T, string][];
+  items: T[];
   set: Set<T>;
   actionType: S;
   label: string;
   dispatch: Dispatch<{ type: S; payload: Set<T> }>;
 }
 
-export function SetCheckboxes<T extends string, S extends string>(
+export function SetCheckboxes<T extends Item, S extends string>(
   props: Props<T, S>,
 ): JSX.Element {
   const { items, set, actionType, label, dispatch } = props;
 
-  const checkboxes = items.map(([id, label]) => {
+  const checkboxes = items.map((item) => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       const newSet = new Set(set);
       if (e.target.checked) {
-        newSet.add(id);
+        newSet.add(item);
       } else {
-        newSet.delete(id);
+        newSet.delete(item);
       }
       dispatch({ type: actionType, payload: newSet });
     };
     const checkbox = (
-      <Checkbox checked={set.has(id)} onChange={onChange} name={id} />
+      <Checkbox checked={set.has(item)} onChange={onChange} name={item.id} />
     );
-    return <FormControlLabel key={id} control={checkbox} label={label} />;
+    return (
+      <FormControlLabel key={item.id} control={checkbox} label={item.name} />
+    );
   });
 
   return (
