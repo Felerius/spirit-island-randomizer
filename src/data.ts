@@ -32,6 +32,19 @@ export class Complexity {
     this.name = name;
   }
 
+  offset(relative: RelativeComplexity): Complexity {
+    if (relative === "equal") {
+      return this;
+    }
+    const index = Complexity.ALL.indexOf(this);
+    const count = Complexity.ALL.length;
+    const newIndex =
+      relative === "higher"
+        ? Math.min(index + 1, count - 1)
+        : Math.max(index - 1, 0);
+    return Complexity.ALL[newIndex];
+  }
+
   static ALL = [
     new Complexity("low", "Low"),
     new Complexity("moderate", "Moderate"),
@@ -44,28 +57,68 @@ export class Complexity {
   );
 }
 
+export type RelativeComplexity = "equal" | "higher" | "lower";
+
 interface SpiritJsonData {
   name: string;
   image: string;
   expansion: string;
   complexity: string;
   wikiTitle: string;
+  aspects?: AspectJsonData[];
+}
+
+interface AspectJsonData {
+  name: string;
+  image?: string;
+  expansion: string;
+  relativeComplexity: string;
+  wikiTitle: string;
+}
+
+function imageLink(name: string): string {
+  return new URL(`./assets/spirits/${name}.webp`, import.meta.url).href;
+}
+
+function wikiLink(title: string): string {
+  return `https://spiritislandwiki.com/index.php?title=${title}`;
+}
+
+export class Aspect {
+  name: string;
+  imageLink?: string;
+  expansion: Expansion;
+  relativeComplexity: RelativeComplexity;
+  complexity: Complexity;
+  wikiLink: string;
+
+  constructor(data: AspectJsonData, baseComplexity: Complexity) {
+    this.name = data.name;
+    this.imageLink = data.image ? imageLink(data.image) : undefined;
+    this.expansion = Expansion.BY_ID[data.expansion];
+    this.relativeComplexity = data.relativeComplexity as RelativeComplexity;
+    this.complexity = baseComplexity.offset(this.relativeComplexity);
+    this.wikiLink = wikiLink(data.wikiTitle);
+  }
 }
 
 export class Spirit {
   name: string;
-  imageHref: string;
+  imageLink: string;
   expansion: Expansion;
   complexity: Complexity;
   wikiLink: string;
+  aspects: Aspect[];
 
   constructor(data: SpiritJsonData) {
-    const imagePath = `./assets/spirits/${data.image}.webp`;
     this.name = data.name;
-    this.imageHref = new URL(imagePath, import.meta.url).href;
+    this.imageLink = imageLink(data.image);
     this.expansion = Expansion.BY_ID[data.expansion];
     this.complexity = Complexity.BY_ID[data.complexity];
-    this.wikiLink = `https://spiritislandwiki.com/index.php?title=${data.wikiTitle}`;
+    this.wikiLink = wikiLink(data.wikiTitle);
+    this.aspects = (data.aspects ?? []).map(
+      (aspectData) => new Aspect(aspectData, this.complexity),
+    );
   }
 
   static ALL = SPIRIT_DATA.map((data) => new Spirit(data));

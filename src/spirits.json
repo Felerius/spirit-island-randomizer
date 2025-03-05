@@ -4,84 +4,276 @@
     "image": "Lightning's_Swift_Strike",
     "expansion": "base",
     "complexity": "low",
-    "wikiTitle": "Lightning%27s_Swift_Strike"
+    "wikiTitle": "Lightning%27s_Swift_Strike",
+    "aspects": [
+      {
+        "name": "Pandemonium",
+        "image": "Lightning's_Swift_Strike_(Pandemonium)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Pandemonium"
+      },
+      {
+        "name": "Wind",
+        "image": "Lightning's_Swift_Strike_(Wind)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Wind"
+      },
+      {
+        "name": "Sparking",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Sparking"
+      },
+      {
+        "name": "Immense",
+        "expansion": "featherflame",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Immense"
+      }
+    ]
   },
   {
     "name": "River Surges in Sunlight",
     "image": "River_Surges_in_Sunlight",
     "expansion": "base",
     "complexity": "low",
-    "wikiTitle": "River_Surges_in_Sunlight"
+    "wikiTitle": "River_Surges_in_Sunlight",
+    "aspects": [
+      {
+        "name": "Sunshine",
+        "image": "River_Surges_in_Sunlight_(Sunshine)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Sunshine"
+      },
+      {
+        "name": "Haven",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Haven"
+      },
+      {
+        "name": "Travel",
+        "expansion": "featherflame",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Travel"
+      }
+    ]
   },
   {
     "name": "Shadows Flicker Like Flame",
     "image": "Shadows_Flicker_Like_Flame",
     "expansion": "base",
     "complexity": "low",
-    "wikiTitle": "Shadows_Flicker_Like_Flame"
+    "wikiTitle": "Shadows_Flicker_Like_Flame",
+    "aspects": [
+      {
+        "name": "Madness",
+        "image": "Shadows_Flicker_Like_Flame_(Madness)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Madness"
+      },
+      {
+        "name": "Reach",
+        "image": "Shadows_Flicker_Like_Flame_(Reach)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "lower",
+        "wikiTitle": "Reach"
+      },
+      {
+        "name": "Dark Fire",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Dark_Fire"
+      },
+      {
+        "name": "Foreboding",
+        "expansion": "featherflame",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Foreboding"
+      },
+      {
+        "name": "Amorphous",
+        "expansion": "featherflame",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Amorphous"
+      }
+    ]
   },
   {
     "name": "Vital Strength of the Earth",
     "image": "Vital_Strength_of_the_Earth",
     "expansion": "base",
     "complexity": "low",
-    "wikiTitle": "Vital_Strength_of_the_Earth"
+    "wikiTitle": "Vital_Strength_of_the_Earth",
+    "aspects": [
+      {
+        "name": "Resilience",
+        "image": "Vital_Strength_of_the_Earth_(Resilience)",
+        "expansion": "jaggedearth",
+        "relativeComplexity": "equal",
+        "wikiTitle": "Resilience"
+      },
+      {
+        "name": "Nourishing",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Nourishing"
+      },
+      {
+        "name": "Might",
+        "expansion": "featherflame",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Might"
+      }
+    ]
   },
   {
     "name": "A Spread of Rampant Green",
     "image": "A_Spread_of_Rampant_Green",
     "expansion": "base",
     "complexity": "moderate",
-    "wikiTitle": "A_Spread_of_Rampant_Green"
+    "wikiTitle": "A_Spread_of_Rampant_Green",
+    "aspects": [
+      {
+        "name": "Tangles",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Tangles"
+      },
+      {
+        "name": "Regrowth",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Regrowth"
+      }
+    ]
   },
   {
     "name": "Thunderspeaker",
     "image": "Thunderspeaker",
     "expansion": "base",
     "complexity": "moderate",
-    "wikiTitle": "Thunderspeaker"
+    "wikiTitle": "Thunderspeaker",
+    "aspects": [
+      {
+        "name": "Warrior",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Warrior"
+      },
+      {
+        "name": "Tactician",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "equal",
+        "wikiTitle": "Tactician"
+      }
+    ]
   },
   {
     "name": "Bringer of Dreams and Nightmares",
     "image": "Bringer_of_Dreams_and_Nightmares",
     "expansion": "base",
     "complexity": "high",
-    "wikiTitle": "Bringer_of_Dreams_and_Nightmares"
+    "wikiTitle": "Bringer_of_Dreams_and_Nightmares",
+    "aspects": [
+      {
+        "name": "Violence",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Violence"
+      },
+      {
+        "name": "Enticing",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "equal",
+        "wikiTitle": "Enticing"
+      }
+    ]
   },
   {
     "name": "Ocean's Hungry Grasp",
     "image": "Ocean's_Hungry_Grasp",
     "expansion": "base",
     "complexity": "high",
-    "wikiTitle": "Ocean%27s_Hungry_Grasp"
+    "wikiTitle": "Ocean%27s_Hungry_Grasp",
+    "aspects": [
+      {
+        "name": "Deeps",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Deeps"
+      }
+    ]
   },
   {
     "name": "Keeper of the Forbidden Wilds",
     "image": "Keeper_of_the_Forbidden_Wilds",
     "expansion": "branchclaw",
     "complexity": "moderate",
-    "wikiTitle": "Keeper_of_the_Forbidden_Wilds"
+    "wikiTitle": "Keeper_of_the_Forbidden_Wilds",
+    "aspects": [
+      {
+        "name": "Spreading Hostility",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Spreading_Hostility"
+      }
+    ]
   },
   {
     "name": "Sharp Fangs Behind the Leaves",
     "image": "Sharp_Fangs_Behind_the_Leaves",
     "expansion": "branchclaw",
     "complexity": "moderate",
-    "wikiTitle": "Sharp_Fangs_Behind_the_Leaves"
+    "wikiTitle": "Sharp_Fangs_Behind_the_Leaves",
+    "aspects": [
+      {
+        "name": "Unconstrained",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "lower",
+        "wikiTitle": "Unconstrained"
+      },
+      {
+        "name": "Encircle",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "equal",
+        "wikiTitle": "Encircle"
+      }
+    ]
   },
   {
     "name": "Heart of the Wildfire",
     "image": "Heart_of_the_Wildfire",
     "expansion": "featherflame",
     "complexity": "high",
-    "wikiTitle": "Heart_of_the_Wildfire"
+    "wikiTitle": "Heart_of_the_Wildfire",
+    "aspects": [
+      {
+        "name": "Transforming",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Transforming"
+      }
+    ]
   },
   {
     "name": "Serpent Slumbering Beneath the Island",
     "image": "Serpent_Slumbering_Beneath_the_Island",
     "expansion": "featherflame",
     "complexity": "high",
-    "wikiTitle": "Serpent_Slumbering_Beneath_the_Island"
+    "wikiTitle": "Serpent_Slumbering_Beneath_the_Island",
+    "aspects": [
+      {
+        "name": "Locus",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Locus"
+      }
+    ]
   },
   {
     "name": "Grinning Trickster Stirs Up Trouble",
@@ -95,7 +287,15 @@
     "image": "Lure_of_the_Deep_Wilderness",
     "expansion": "jaggedearth",
     "complexity": "moderate",
-    "wikiTitle": "Lure_of_the_Deep_Wilderness"
+    "wikiTitle": "Lure_of_the_Deep_Wilderness",
+    "aspects": [
+      {
+        "name": "Lair",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Lair"
+      }
+    ]
   },
   {
     "name": "Many Minds Move as One",
@@ -109,7 +309,21 @@
     "image": "Shifting_Memory_of_Ages",
     "expansion": "jaggedearth",
     "complexity": "moderate",
-    "wikiTitle": "Shifting_Memory_of_Ages"
+    "wikiTitle": "Shifting_Memory_of_Ages",
+    "aspects": [
+      {
+        "name": "Mentor",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Mentor"
+      },
+      {
+        "name": "Intensify",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "higher",
+        "wikiTitle": "Intensify"
+      }
+    ]
   },
   {
     "name": "Stone's Unyielding Defiance",
@@ -130,7 +344,15 @@
     "image": "Shroud_of_Silent_Mist",
     "expansion": "jaggedearth",
     "complexity": "high",
-    "wikiTitle": "Shroud_of_Silent_Mist"
+    "wikiTitle": "Shroud_of_Silent_Mist",
+    "aspects": [
+      {
+        "name": "Stranded",
+        "expansion": "natureincarnate",
+        "relativeComplexity": "lower",
+        "wikiTitle": "Stranded"
+      }
+    ]
   },
   {
     "name": "Vengeance as a Burning Plague",

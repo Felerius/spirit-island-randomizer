@@ -1,39 +1,81 @@
-import { Box, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  Typography,
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import { useReducer } from "react";
-import { range, shuffle } from "remeda";
-import { RandomizeResult } from "./RandomizeResult.tsx";
+import { range, sample, shuffle } from "remeda";
+import { type ChosenSpirit, RandomizeResult } from "./RandomizeResult.tsx";
 import { Complexity, Expansion, Spirit } from "../data.ts";
 import { SetCheckboxes } from "./SetCheckboxes.tsx";
 import { IntSlider } from "./IntSlider.tsx";
 
 type Action =
-  | { type: "updateExpansions"; payload: Set<Expansion> }
-  | { type: "updateComplexities"; payload: Set<Complexity> }
-  | { type: "updateNumPlayers"; payload: number }
-  | { type: "updateSpiritsPerPlayer"; payload: number }
-  | { type: "randomize"; payload: Spirit[][] };
+  | { type: "setExpansions"; payload: Set<Expansion> }
+  | { type: "setComplexities"; payload: Set<Complexity> }
+  | { type: "setNumPlayers"; payload: number }
+  | { type: "setSpiritsPerPlayer"; payload: number }
+  | { type: "setEnableAspects"; payload: boolean }
+  | { type: "randomize"; payload: ChosenSpirit[][] };
 
 interface State {
   numPlayers: number;
   spiritsPerPlayer: number;
+  enableAspects: boolean;
   expansions: Set<Expansion>;
   complexities: Set<Complexity>;
-  randomizedSet: Spirit[][] | null;
+  result?: ChosenSpirit[][];
+}
+
+function aspectChoices(spirit: Spirit, state: State): ChosenSpirit[] {
+  const aspects = state.enableAspects
+    ? [undefined, ...spirit.aspects]
+    : [undefined];
+  return aspects
+    .filter((aspect) => {
+      const complexity = aspect?.complexity ?? spirit.complexity;
+      return (
+        state.expansions.has(spirit.expansion) &&
+        (aspect ? state.expansions.has(aspect.expansion) : true) &&
+        state.complexities.has(complexity)
+      );
+    })
+    .map((aspect) => ({ spirit, aspect }));
+}
+
+function chooseResult(state: State): ChosenSpirit[][] {
+  const available = Spirit.ALL.flatMap((spirit) =>
+    sample(aspectChoices(spirit, state), 1),
+  );
+  const shuffled = shuffle(available);
+  return range(0, state.numPlayers).map((i) =>
+    shuffled.slice(
+      i * state.spiritsPerPlayer,
+      (i + 1) * state.spiritsPerPlayer,
+    ),
+  );
 }
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case "updateExpansions":
+    case "setExpansions":
       return { ...state, expansions: action.payload };
-    case "updateComplexities":
+    case "setComplexities":
       return { ...state, complexities: action.payload };
-    case "updateNumPlayers":
+    case "setNumPlayers":
       return { ...state, numPlayers: action.payload };
-    case "updateSpiritsPerPlayer":
+    case "setSpiritsPerPlayer":
       return { ...state, spiritsPerPlayer: action.payload };
+    case "setEnableAspects":
+      return { ...state, enableAspects: action.payload };
     case "randomize":
-      return { ...state, randomizedSet: action.payload };
+      return { ...state, result: action.payload };
   }
 }
 
@@ -41,33 +83,21 @@ export function App() {
   const [state, dispatch] = useReducer(reducer, {
     numPlayers: 2,
     spiritsPerPlayer: 3,
+    enableAspects: true,
     expansions: new Set(Expansion.ALL),
     complexities: new Set(Complexity.ALL),
-    randomizedSet: null,
   });
 
-  const resultView =
-    state.randomizedSet === null ? null : (
-      <RandomizeResult spirits={state.randomizedSet} />
-    );
-
-  const filteredSpirits = Spirit.ALL.filter(
-    (spirit) =>
-      state.expansions.has(spirit.expansion) &&
-      state.complexities.has(spirit.complexity),
-  );
+  const availableSpirits = Spirit.ALL.filter(
+    (spirit) => aspectChoices(spirit, state).length > 0,
+  ).length;
   const enoughSpirits =
-    filteredSpirits.length >= state.numPlayers * state.spiritsPerPlayer;
-  const onRandomize = () => {
-    const shuffledSpirits = shuffle(filteredSpirits);
-    const chosen = range(0, state.numPlayers).map((i) =>
-      shuffledSpirits.slice(
-        i * state.spiritsPerPlayer,
-        (i + 1) * state.spiritsPerPlayer,
-      ),
+    availableSpirits >= state.numPlayers * state.spiritsPerPlayer;
+
+  const resultView =
+    state.result === undefined ? null : (
+      <RandomizeResult spirits={state.result} />
     );
-    dispatch({ type: "randomize", payload: chosen });
-  };
 
   return (
     <Container maxWidth="md">
@@ -77,7 +107,7 @@ export function App() {
         min={1}
         max={6}
         label="Number of players"
-        actionType="updateNumPlayers"
+        actionType="setNumPlayers"
         dispatch={dispatch}
       />
       <IntSlider
@@ -85,7 +115,7 @@ export function App() {
         min={1}
         max={6}
         label="Spirits per player"
-        actionType="updateSpiritsPerPlayer"
+        actionType="setSpiritsPerPlayer"
         dispatch={dispatch}
       />
 
@@ -93,21 +123,42 @@ export function App() {
         <SetCheckboxes
           items={Expansion.ALL}
           set={state.expansions}
-          actionType="updateExpansions"
+          actionType="setExpansions"
           label="Expansions"
           dispatch={dispatch}
         />
         <SetCheckboxes
           items={Complexity.ALL}
           set={state.complexities}
-          actionType="updateComplexities"
+          actionType="setComplexities"
           label="Complexities"
           dispatch={dispatch}
         />
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Options</FormLabel>
+          <FormGroup>
+            <FormControlLabel
+              label="Enable Aspects"
+              control={
+                <Checkbox
+                  checked={state.enableAspects}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "setEnableAspects",
+                      payload: e.target.checked,
+                    })
+                  }
+                />
+              }
+            />
+          </FormGroup>
+        </FormControl>
       </Box>
 
       <Button
-        onClick={onRandomize}
+        onClick={() => {
+          dispatch({ type: "randomize", payload: chooseResult(state) });
+        }}
         disabled={!enoughSpirits}
         variant="contained"
         sx={{ mt: 2 }}

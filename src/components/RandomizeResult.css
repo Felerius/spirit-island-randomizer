@@ -1,7 +1,52 @@
-.spiritImage {
+.spirit-container {
+  position: relative;
+}
+
+.spirit-image {
   min-width: 0;
   min-height: 0;
   max-width: 100%;
   flex: 1;
   object-fit: contain;
+  display: block;
+}
+
+.aspect-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aspect-overlay.aspect-complexity-equal {
+  background: #dbb928;
+}
+
+.aspect-overlay.aspect-complexity-equal::after {
+  font-size: 2rem;
+  font-weight: 700;
+  content: '=';
+}
+
+.aspect-overlay.aspect-complexity-higher {
+  background: #a91d21;
+}
+
+.aspect-overlay.aspect-complexity-higher::after {
+  font-size: 1.5rem;
+  content: '▲';
+}
+
+.aspect-overlay.aspect-complexity-lower {
+  background: #069243;
+}
+
+.aspect-overlay.aspect-complexity-lower::after {
+  font-size: 1.5rem;
+  content: '▼';
 }
