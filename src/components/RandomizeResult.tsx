@@ -1,6 +1,6 @@
 import { Stack, Tooltip } from "@mui/material";
 import type { JSX } from "react";
-import { COMPLEXITIES, SPIRITS, type Spirit } from "./data.ts";
+import { COMPLEXITIES, SPIRITS, type Spirit } from "../data.ts";
 import "./RandomizeResult.css";
 
 interface Props {
