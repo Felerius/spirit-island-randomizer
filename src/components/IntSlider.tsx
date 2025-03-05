@@ -19,7 +19,7 @@ export function IntSlider<T extends string>(props: Props<T>): JSX.Element {
   }));
 
   return (
-    <FormControl fullWidth={true}>
+    <FormControl fullWidth={true} sx={{ mt: 2 }}>
       <FormLabel component="legend">{label}</FormLabel>
       <Slider
         value={value}
