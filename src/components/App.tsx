@@ -2,7 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useReducer } from "react";
 import { range, shuffle } from "remeda";
-import { Result } from "./RandomizeResult.tsx";
+import { RandomizeResult } from "./RandomizeResult.tsx";
 import {
   COMPLEXITIES,
   type Complexity,
@@ -57,7 +57,7 @@ export function App() {
 
   const resultView =
     state.randomizedSet === null ? null : (
-      <Result spirits={state.randomizedSet} />
+      <RandomizeResult spirits={state.randomizedSet} />
     );
 
   const filteredSpirits = Object.keys(SPIRITS).filter(
