@@ -136,7 +136,11 @@ export function App() {
         dispatch={dispatch}
       />
 
-      <Stack direction="row" gap={2} sx={{ mt: 2, flexWrap: "wrap" }}>
+      <Stack
+        direction="row"
+        gap={2}
+        sx={{ mt: 2, flexWrap: "wrap", justifyContent: "space-between" }}
+      >
         <SetCheckboxes
           items={Expansion.ALL}
           set={state.expansions}
