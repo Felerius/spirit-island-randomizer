@@ -35,7 +35,7 @@ export function RandomizeResult(props: Props): JSX.Element {
           <Tooltip title={`${title} (${complexity.name})`}>
             <div className="spirit-container">
               <a href={spirit.wikiLink}>
-                <img className="spirit-image" src={image} alt={title} />
+                <img src={image} alt={title} />
               </a>
               {aspectOverlay}
             </div>
