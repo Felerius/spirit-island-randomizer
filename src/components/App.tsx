@@ -1,5 +1,4 @@
 import {
-  Box,
   Checkbox,
   Container,
   FormControl,
@@ -137,7 +136,7 @@ export function App() {
         dispatch={dispatch}
       />
 
-      <Box sx={{ mt: 2 }}>
+      <Stack direction="row" gap={2} sx={{ mt: 2, flexWrap: "wrap" }}>
         <SetCheckboxes
           items={Expansion.ALL}
           set={state.expansions}
@@ -173,7 +172,7 @@ export function App() {
             />
           </FormGroup>
         </FormControl>
-      </Box>
+      </Stack>
 
       <Button
         onClick={() => {
