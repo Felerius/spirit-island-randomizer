@@ -1,7 +1,7 @@
 import { Grid2, Tooltip } from "@mui/material";
 import type { JSX } from "react";
 import type { Aspect, Spirit } from "../data.ts";
-import "./RandomizeResult.css";
+import css from "./RandomizeResult.module.css";
 
 export interface ChosenSpirit {
   spirit: Spirit;
@@ -13,11 +13,11 @@ interface Props {
 }
 
 function AspectOverlay(props: { aspect: Aspect }): JSX.Element {
+  const complexityClass =
+    css[`aspect-complexity-${props.aspect.relativeComplexity}`];
   return (
     <a href={props.aspect.wikiLink}>
-      <span
-        className={`aspect-overlay aspect-complexity-${props.aspect.relativeComplexity}`}
-      />
+      <span className={`${css.aspectOverlay} ${complexityClass}`} />
     </a>
   );
 }
@@ -33,7 +33,7 @@ export function RandomizeResult(props: Props): JSX.Element {
       return (
         <Grid2 key={spirit.name} size={{ xs: 12, sm: 6, md: 4 }}>
           <Tooltip title={`${title} (${complexity.name})`}>
-            <div className="spirit-container">
+            <div className={css.spiritContainer}>
               <a href={spirit.wikiLink}>
                 <img src={image} alt={title} />
               </a>
