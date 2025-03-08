@@ -6,6 +6,7 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  Stack,
   SvgIcon,
   Typography,
 } from "@mui/material";
@@ -89,9 +90,10 @@ function expansionLabel(expansion: Expansion): ReactNode {
     />
   ) : null;
   return (
-    <>
-      {expansion.name} {icon}
-    </>
+    <Stack alignItems="center" direction="row" gap={1}>
+      {icon}
+      {expansion.name}
+    </Stack>
   );
 }
 
