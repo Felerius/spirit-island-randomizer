@@ -1,21 +1,29 @@
 import SPIRIT_DATA from "./spirits.json";
+import type { FunctionComponent } from "react";
+import BranchClawIcon from "./assets/expansions/branchclaw.svg?react";
+import JaggedEarthIcon from "./assets/expansions/jaggedearth.svg?react";
+import FeatherFlameIcon from "./assets/expansions/featherflame.svg?react";
+import NatureIncarnateIcon from "./assets/expansions/natureincarnate.svg?react";
+import HorizonsIcon from "./assets/expansions/horizons.svg?react";
 
 export class Expansion {
   id: string;
   name: string;
+  icon?: FunctionComponent;
 
-  constructor(id: string, name: string) {
+  constructor(id: string, name: string, icon?: FunctionComponent) {
     this.id = id;
     this.name = name;
+    this.icon = icon;
   }
 
   static ALL = [
     new Expansion("base", "Base Game"),
-    new Expansion("branchclaw", "Branch & Claw"),
-    new Expansion("jaggedearth", "Jagged Earth"),
-    new Expansion("featherflame", "Feather & Flame"),
-    new Expansion("natureincarnate", "Nature Incarnate"),
-    new Expansion("horizons", "Horizons of Spirit Island"),
+    new Expansion("branchclaw", "Branch & Claw", BranchClawIcon),
+    new Expansion("jaggedearth", "Jagged Earth", JaggedEarthIcon),
+    new Expansion("featherflame", "Feather & Flame", FeatherFlameIcon),
+    new Expansion("natureincarnate", "Nature Incarnate", NatureIncarnateIcon),
+    new Expansion("horizons", "Horizons of Spirit Island", HorizonsIcon),
   ];
 
   static BY_ID = Object.fromEntries(
@@ -76,7 +84,7 @@ interface AspectJsonData {
   wikiTitle: string;
 }
 
-function imageLink(name: string): string {
+function spiritImageLink(name: string): string {
   return new URL(`./assets/spirits/${name}.webp`, import.meta.url).href;
 }
 
@@ -94,7 +102,7 @@ export class Aspect {
 
   constructor(data: AspectJsonData, baseComplexity: Complexity) {
     this.name = data.name;
-    this.imageLink = data.image ? imageLink(data.image) : undefined;
+    this.imageLink = data.image ? spiritImageLink(data.image) : undefined;
     this.expansion = Expansion.BY_ID[data.expansion];
     this.relativeComplexity = data.relativeComplexity as RelativeComplexity;
     this.complexity = baseComplexity.offset(this.relativeComplexity);
@@ -112,7 +120,7 @@ export class Spirit {
 
   constructor(data: SpiritJsonData) {
     this.name = data.name;
-    this.imageLink = imageLink(data.image);
+    this.imageLink = spiritImageLink(data.image);
     this.expansion = Expansion.BY_ID[data.expansion];
     this.complexity = Complexity.BY_ID[data.complexity];
     this.wikiLink = wikiLink(data.wikiTitle);

@@ -6,10 +6,11 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  SvgIcon,
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useReducer } from "react";
+import { type ReactNode, useReducer } from "react";
 import { range, sample, shuffle } from "remeda";
 import { type ChosenSpirit, RandomizeResult } from "./RandomizeResult.tsx";
 import { Complexity, Expansion, Spirit } from "../data.ts";
@@ -79,6 +80,21 @@ function reducer(state: State, action: Action): State {
   }
 }
 
+function expansionLabel(expansion: Expansion): ReactNode {
+  const icon = expansion.icon ? (
+    <SvgIcon
+      fontSize="inherit"
+      component={expansion.icon}
+      inheritViewBox={true}
+    />
+  ) : null;
+  return (
+    <>
+      {expansion.name} {icon}
+    </>
+  );
+}
+
 export function App() {
   const [state, dispatch] = useReducer(reducer, {
     numPlayers: 2,
@@ -125,6 +141,7 @@ export function App() {
           set={state.expansions}
           actionType="setExpansions"
           label="Expansions"
+          itemLabel={expansionLabel}
           dispatch={dispatch}
         />
         <SetCheckboxes
@@ -132,6 +149,7 @@ export function App() {
           set={state.complexities}
           actionType="setComplexities"
           label="Complexities"
+          itemLabel={(complexity) => complexity.name}
           dispatch={dispatch}
         />
         <FormControl component="fieldset">

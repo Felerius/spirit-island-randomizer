@@ -5,22 +5,18 @@ import {
   FormGroup,
   FormLabel,
 } from "@mui/material";
-import type { ChangeEvent, Dispatch, JSX } from "react";
-
-interface Item {
-  id: string;
-  name: string;
-}
+import type { ChangeEvent, Dispatch, JSX, ReactNode } from "react";
 
 interface Props<T, S extends string> {
   items: T[];
   set: Set<T>;
   actionType: S;
   label: string;
+  itemLabel: (item: T) => ReactNode;
   dispatch: Dispatch<{ type: S; payload: Set<T> }>;
 }
 
-export function SetCheckboxes<T extends Item, S extends string>(
+export function SetCheckboxes<T extends { id: string }, S extends string>(
   props: Props<T, S>,
 ): JSX.Element {
   const { items, set, actionType, label, dispatch } = props;
@@ -39,7 +35,11 @@ export function SetCheckboxes<T extends Item, S extends string>(
       <Checkbox checked={set.has(item)} onChange={onChange} name={item.id} />
     );
     return (
-      <FormControlLabel key={item.id} control={checkbox} label={item.name} />
+      <FormControlLabel
+        key={item.id}
+        control={checkbox}
+        label={props.itemLabel(item)}
+      />
     );
   });
 
