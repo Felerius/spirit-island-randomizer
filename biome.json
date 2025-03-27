@@ -1,17 +1,9 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "files": {
+    "ignore": ["src/routeTree.gen.ts"]
+  },
   "formatter": {
     "indentStyle": "space"
-  },
-  "linter": {
-    "rules": {
-      "all": true,
-      "style": {
-        "useDefaultSwitchClause": "off"
-      },
-      "suspicious": {
-        "noReactSpecificProps": "off"
-      }
-    }
   }
 }

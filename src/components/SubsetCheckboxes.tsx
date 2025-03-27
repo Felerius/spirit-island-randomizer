@@ -5,22 +5,21 @@ import {
   FormGroup,
   FormLabel,
 } from "@mui/material";
-import type { ChangeEvent, Dispatch, JSX, ReactNode } from "react";
+import type { ChangeEvent, Dispatch, ReactNode } from "react";
 
-interface Props<T, S extends string> {
-  items: T[];
-  set: Set<T>;
-  actionType: S;
+interface SubsetCheckboxesProps<T extends string, I extends string> {
+  items: I[];
+  set: Set<I>;
+  actionType: T;
   label: string;
-  itemLabel: (item: T) => ReactNode;
-  dispatch: Dispatch<{ type: S; payload: Set<T> }>;
+  itemLabel: (id: I) => ReactNode;
+  dispatch: Dispatch<{ type: T; payload: Set<I> }>;
 }
 
-export function SetCheckboxes<T extends { id: string }, S extends string>(
-  props: Props<T, S>,
-): JSX.Element {
-  const { items, set, actionType, label, dispatch } = props;
-
+export function SubsetCheckboxes<T extends string, I extends string>(
+  props: SubsetCheckboxesProps<T, I>,
+): ReactNode {
+  const { items, set, actionType, label, itemLabel, dispatch } = props;
   const checkboxes = items.map((item) => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       const newSet = new Set(set);
@@ -32,14 +31,10 @@ export function SetCheckboxes<T extends { id: string }, S extends string>(
       dispatch({ type: actionType, payload: newSet });
     };
     const checkbox = (
-      <Checkbox checked={set.has(item)} onChange={onChange} name={item.id} />
+      <Checkbox checked={set.has(item)} onChange={onChange} name={item} />
     );
     return (
-      <FormControlLabel
-        key={item.id}
-        control={checkbox}
-        label={props.itemLabel(item)}
-      />
+      <FormControlLabel key={item} control={checkbox} label={itemLabel(item)} />
     );
   });
 
