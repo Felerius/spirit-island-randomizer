@@ -6,6 +6,9 @@ export default defineConfig({
   tsr: {
     appDirectory: "src",
   },
+  server: {
+    preset: "node-server",
+  },
   vite: {
     ssr: {
       noExternal: ["@mui/*"],
