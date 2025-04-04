@@ -1,4 +1,5 @@
-FROM node:23-alpine AS build
+# Our nodejs build is completely platform independent
+FROM --platform=$BUILDPLATFORM node:23-alpine AS build
 WORKDIR /app
 RUN corepack enable
 
