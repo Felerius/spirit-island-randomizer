@@ -11,6 +11,9 @@ on:
     branches:
       - main
 
+permissions:
+  packages: write
+
 jobs:
   main:
     runs-on: ubuntu-24.04
