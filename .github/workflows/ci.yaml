@@ -12,6 +12,8 @@ on:
       - main
 
 permissions:
+  # To create releases
+  contents: write
   packages: write
 
 jobs:
