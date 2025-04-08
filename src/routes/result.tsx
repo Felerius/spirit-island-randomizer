@@ -2,7 +2,7 @@
 import { ASPECTS, ASPECT_SCHEMA, type AspectId } from "$data/aspects";
 import { SPIRITS, SPIRIT_SCHEMA, type SpiritId } from "$data/spirits";
 import { css } from "@emotion/react";
-import { Grid2, Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, type ReactNode } from "react";
 import z from "zod";
@@ -27,9 +27,9 @@ function RouteComponent() {
     return (
       <Fragment key={playerName}>
         <h1 css={css`text-align: center;`}>{playerName}</h1>
-        <Grid2 container spacing={2} justifyContent="space-evenly">
+        <Grid container spacing={2} justifyContent="space-evenly">
           {spiritDisplays}
-        </Grid2>
+        </Grid>
       </Fragment>
     );
   });
@@ -60,7 +60,7 @@ function ChosenSpirit(props: {
     object-fit: contain;`;
 
   return (
-    <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
+    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
       <Stack alignItems="center" height={"100%"}>
         <h3 css={titleCss}>
           <span>
@@ -76,7 +76,7 @@ function ChosenSpirit(props: {
         </h3>
         <img src={imageUrl} alt={spiritData.name} css={imageCss} />
       </Stack>
-    </Grid2>
+    </Grid>
   );
 }
 

@@ -10,10 +10,6 @@ export default defineConfig({
     preset: "node-server",
   },
   vite: {
-    ssr: {
-      noExternal: ["@mui/*"],
-    },
-
     plugins: [
       tsConfigPaths({
         projects: ["./tsconfig.json"],
