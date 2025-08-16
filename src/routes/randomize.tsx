@@ -7,7 +7,7 @@ import { EXPANSION_IDS, EXPANSION_SCHEMA } from "$data/expansions";
 import { availableSpirits, SPIRITS, type SpiritId } from "$data/spirits";
 
 const searchSchema = z.object({
-  players: z.string().array().nonempty().catch(["Player 1", "Player 2"]),
+  players: z.string().array().min(1).catch(["Player 1", "Player 2"]),
   spiritsPerPlayer: z.number().int().min(1).catch(2),
   chooseAspects: z.boolean().catch(true),
   expansions: z.array(EXPANSION_SCHEMA).catch(EXPANSION_IDS),
