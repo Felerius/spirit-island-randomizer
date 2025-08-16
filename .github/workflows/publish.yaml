@@ -1,4 +1,4 @@
-name: CI
+name: Publish
 
 on:
   workflow_dispatch:
@@ -7,9 +7,6 @@ on:
       - main
     tags:
       - v*
-  pull_request:
-    branches:
-      - main
 
 permissions:
   # To create releases
@@ -30,7 +27,6 @@ jobs:
           images: ghcr.io/felerius/spirit-island-randomizer
 
       - name: Login to GitHub Container Registry
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3
         with:
           registry: ghcr.io
@@ -49,7 +45,7 @@ jobs:
           context: .
           file: Containerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker-metadata.outputs.tags }}
           labels: ${{ steps.docker-metadata.outputs.labels }}
           cache-from: type=gha
