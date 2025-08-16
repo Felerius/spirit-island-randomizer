@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { ASPECTS, ASPECT_SCHEMA, type AspectId } from "$data/aspects";
-import { SPIRITS, SPIRIT_SCHEMA, type SpiritId } from "$data/spirits";
+
 import { css } from "@emotion/react";
 import { Grid, Stack } from "@mui/material";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, type ReactNode } from "react";
 import z from "zod";
+import { ASPECT_SCHEMA, ASPECTS, type AspectId } from "$data/aspects";
+import { SPIRIT_SCHEMA, SPIRITS, type SpiritId } from "$data/spirits";
 
 const chosenSpiritSchema = z.tuple([SPIRIT_SCHEMA, z.nullable(ASPECT_SCHEMA)]);
 const searchSchema = z.object({

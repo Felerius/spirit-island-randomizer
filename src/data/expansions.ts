@@ -1,10 +1,10 @@
+import type { FunctionComponent } from "react";
+import z from "zod";
 import BranchClawIcon from "$assets/expansions/branchclaw.svg?react";
 import FeatherFlameIcon from "$assets/expansions/featherflame.svg?react";
 import HorizonsIcon from "$assets/expansions/horizons.svg?react";
 import JaggedEarthIcon from "$assets/expansions/jaggedearth.svg?react";
 import NatureIncarnateIcon from "$assets/expansions/natureincarnate.svg?react";
-import type { FunctionComponent } from "react";
-import z from "zod";
 
 export interface Expansion {
   name: string;

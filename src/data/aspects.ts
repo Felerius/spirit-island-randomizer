@@ -1,10 +1,10 @@
+import z from "zod";
 import madnessImage from "$assets/aspects/Madness.webp";
 import pandemoniumImage from "$assets/aspects/Pandemonium.webp";
 import reachImage from "$assets/aspects/Reach.webp";
 import resilienceImage from "$assets/aspects/Resilience.webp";
 import sunshineImage from "$assets/aspects/Sunshine.webp";
 import windImage from "$assets/aspects/Wind.webp";
-import z from "zod";
 import type { ExpansionId } from "./expansions";
 import type { SpiritId } from "./spirits";
 
