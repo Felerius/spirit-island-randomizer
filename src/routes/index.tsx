@@ -1,17 +1,3 @@
-import { ButtonLink } from "$components/ButtonLink";
-import {
-  type Player,
-  PlayerNames,
-  type UpdatePlayersAction,
-} from "$components/PlayerNames";
-import { SubsetCheckboxes } from "$components/SubsetCheckboxes";
-import {
-  COMPLEXITIES,
-  COMPLEXITY_IDS,
-  type ComplexityId,
-} from "$data/complexities";
-import { EXPANSIONS, EXPANSION_IDS, type ExpansionId } from "$data/expansions";
-import { availableSpirits } from "$data/spirits";
 import {
   Checkbox,
   FormControl,
@@ -27,6 +13,20 @@ import {
 import { createFileRoute } from "@tanstack/react-router";
 import { type Dispatch, type ReactNode, useReducer } from "react";
 import { range } from "remeda";
+import { ButtonLink } from "$components/ButtonLink";
+import {
+  type Player,
+  PlayerNames,
+  type UpdatePlayersAction,
+} from "$components/PlayerNames";
+import { SubsetCheckboxes } from "$components/SubsetCheckboxes";
+import {
+  COMPLEXITIES,
+  COMPLEXITY_IDS,
+  type ComplexityId,
+} from "$data/complexities";
+import { EXPANSION_IDS, EXPANSIONS, type ExpansionId } from "$data/expansions";
+import { availableSpirits } from "$data/spirits";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -115,7 +115,10 @@ function Index() {
 function SpiritsPerPlayer({
   value,
   dispatch,
-}: { value: number; dispatch: Dispatch<Action> }): ReactNode {
+}: {
+  value: number;
+  dispatch: Dispatch<Action>;
+}): ReactNode {
   const marks = range(1, 7).map((i) => ({ value: i, label: i.toString() }));
   return (
     <FormControl fullWidth>
@@ -142,7 +145,10 @@ function SpiritsPerPlayer({
 function Options({
   state,
   dispatch,
-}: { state: State; dispatch: Dispatch<Action> }): ReactNode {
+}: {
+  state: State;
+  dispatch: Dispatch<Action>;
+}): ReactNode {
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">Options</FormLabel>

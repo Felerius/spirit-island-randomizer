@@ -1,10 +1,10 @@
+import { createFileRoute, Navigate } from "@tanstack/react-router";
+import { sample, shuffle } from "remeda";
+import z from "zod";
 import type { AspectId } from "$data/aspects";
 import { COMPLEXITY_IDS, COMPLEXITY_SCHEMA } from "$data/complexities";
 import { EXPANSION_IDS, EXPANSION_SCHEMA } from "$data/expansions";
-import { SPIRITS, type SpiritId, availableSpirits } from "$data/spirits";
-import { Navigate, createFileRoute } from "@tanstack/react-router";
-import { sample, shuffle } from "remeda";
-import z from "zod";
+import { availableSpirits, SPIRITS, type SpiritId } from "$data/spirits";
 
 const searchSchema = z.object({
   players: z.string().array().nonempty().catch(["Player 1", "Player 2"]),

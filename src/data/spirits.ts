@@ -1,3 +1,4 @@
+import z from "zod";
 import spreadImage from "$assets/spirits/A_Spread_of_Rampant_Green.webp";
 import breathImage from "$assets/spirits/Breath_of_Darkness_Down_Your_Spine.webp";
 import bringerImage from "$assets/spirits/Bringer_of_Dreams_and_Nightmares.webp";
@@ -35,8 +36,7 @@ import vitalImage from "$assets/spirits/Vital_Strength_of_the_Earth.webp";
 import volcanoImage from "$assets/spirits/Volcano_Looming_High.webp";
 import wanderingImage from "$assets/spirits/Wandering_Voice_Keens_Delirium.webp";
 import woundedImage from "$assets/spirits/Wounded_Waters_Bleeding.webp";
-import z from "zod";
-import { ASPECTS, ASPECT_IDS, type AspectId } from "./aspects";
+import { ASPECT_IDS, ASPECTS, type AspectId } from "./aspects";
 import type { ComplexityId } from "./complexities";
 import type { ExpansionId } from "./expansions";
 

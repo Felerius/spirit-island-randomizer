@@ -1,17 +1,17 @@
-import { theme } from "$/setup/theme";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import fontsourceVariableRobotoCss from "@fontsource-variable/roboto?url";
 import { Container, CssBaseline, ThemeProvider } from "@mui/material";
 import {
+  createRootRoute,
   HeadContent,
   Outlet,
   Scripts,
-  createRootRoute,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type React from "react";
 import { StrictMode } from "react";
+import { theme } from "$/setup/theme";
 
 export const Route = createRootRoute({
   head: () => ({
