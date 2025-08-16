@@ -1,4 +1,4 @@
-import z from "zod";
+import * as z from "zod/mini";
 
 export type ComplexityId = keyof typeof COMPLEXITIES_RAW;
 
