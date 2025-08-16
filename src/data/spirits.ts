@@ -1,4 +1,4 @@
-import z from "zod";
+import * as z from "zod/mini";
 import spreadImage from "$assets/spirits/A_Spread_of_Rampant_Green.webp";
 import breathImage from "$assets/spirits/Breath_of_Darkness_Down_Your_Spine.webp";
 import bringerImage from "$assets/spirits/Bringer_of_Dreams_and_Nightmares.webp";

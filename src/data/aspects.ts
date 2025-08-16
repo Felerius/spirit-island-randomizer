@@ -1,4 +1,4 @@
-import z from "zod";
+import * as z from "zod/mini";
 import madnessImage from "$assets/aspects/Madness.webp";
 import pandemoniumImage from "$assets/aspects/Pandemonium.webp";
 import reachImage from "$assets/aspects/Reach.webp";

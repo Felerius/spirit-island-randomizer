@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { Grid, Stack } from "@mui/material";
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment, type ReactNode } from "react";
-import z from "zod";
+import * as z from "zod/mini";
 import { ASPECT_SCHEMA, ASPECTS, type AspectId } from "$data/aspects";
 import { SPIRIT_SCHEMA, SPIRITS, type SpiritId } from "$data/spirits";
 

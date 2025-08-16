@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import z from "zod";
+import * as z from "zod/mini";
 import BranchClawIcon from "$assets/expansions/branchclaw.svg?react";
 import FeatherFlameIcon from "$assets/expansions/featherflame.svg?react";
 import HorizonsIcon from "$assets/expansions/horizons.svg?react";
