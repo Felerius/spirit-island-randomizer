@@ -8,82 +8,43 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResultRouteImport } from './routes/result'
+import { Route as RandomizeRouteImport } from './routes/randomize'
+import { Route as IndexRouteImport } from './routes/index'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as ResultImport } from './routes/result'
-import { Route as RandomizeImport } from './routes/randomize'
-import { Route as IndexImport } from './routes/index'
-
-// Create/Update Routes
-
-const ResultRoute = ResultImport.update({
+const ResultRoute = ResultRouteImport.update({
   id: '/result',
   path: '/result',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const RandomizeRoute = RandomizeImport.update({
+const RandomizeRoute = RandomizeRouteImport.update({
   id: '/randomize',
   path: '/randomize',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/randomize': {
-      id: '/randomize'
-      path: '/randomize'
-      fullPath: '/randomize'
-      preLoaderRoute: typeof RandomizeImport
-      parentRoute: typeof rootRoute
-    }
-    '/result': {
-      id: '/result'
-      path: '/result'
-      fullPath: '/result'
-      preLoaderRoute: typeof ResultImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/randomize': typeof RandomizeRoute
   '/result': typeof ResultRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/randomize': typeof RandomizeRoute
   '/result': typeof ResultRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/randomize': typeof RandomizeRoute
   '/result': typeof ResultRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths: '/' | '/randomize' | '/result'
@@ -92,11 +53,36 @@ export interface FileRouteTypes {
   id: '__root__' | '/' | '/randomize' | '/result'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   RandomizeRoute: typeof RandomizeRoute
   ResultRoute: typeof ResultRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/result': {
+      id: '/result'
+      path: '/result'
+      fullPath: '/result'
+      preLoaderRoute: typeof ResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/randomize': {
+      id: '/randomize'
+      path: '/randomize'
+      fullPath: '/randomize'
+      preLoaderRoute: typeof RandomizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -104,31 +90,6 @@ const rootRouteChildren: RootRouteChildren = {
   RandomizeRoute: RandomizeRoute,
   ResultRoute: ResultRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/randomize",
-        "/result"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/randomize": {
-      "filePath": "randomize.tsx"
-    },
-    "/result": {
-      "filePath": "result.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
