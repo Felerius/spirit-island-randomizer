@@ -1,15 +1,15 @@
 import * as z from "zod/mini";
+import amorphousImage from "$assets/aspects/Amorphous.avif";
+import forebodingImage from "$assets/aspects/Foreboding.avif";
+import immenseImage from "$assets/aspects/Immense.avif";
 import madnessImage from "$assets/aspects/Madness.avif";
+import mightImage from "$assets/aspects/Might.avif";
 import pandemoniumImage from "$assets/aspects/Pandemonium.avif";
 import reachImage from "$assets/aspects/Reach.avif";
 import resilienceImage from "$assets/aspects/Resilience.avif";
 import sunshineImage from "$assets/aspects/Sunshine.avif";
-import windImage from "$assets/aspects/Wind.avif";
-import immenseImage from "$assets/aspects/Immense.avif";
 import travelImage from "$assets/aspects/Travel.avif";
-import amorphousImage from "$assets/aspects/Amorphous.avif";
-import forebodingImage from "$assets/aspects/Foreboding.avif";
-import mightImage from "$assets/aspects/Might.avif";
+import windImage from "$assets/aspects/Wind.avif";
 import type { ExpansionId } from "./expansions";
 import type { SpiritId } from "./spirits";
 
