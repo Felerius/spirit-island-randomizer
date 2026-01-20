@@ -1,10 +1,15 @@
 import * as z from "zod/mini";
-import madnessImage from "$assets/aspects/Madness.webp";
-import pandemoniumImage from "$assets/aspects/Pandemonium.webp";
-import reachImage from "$assets/aspects/Reach.webp";
-import resilienceImage from "$assets/aspects/Resilience.webp";
-import sunshineImage from "$assets/aspects/Sunshine.webp";
-import windImage from "$assets/aspects/Wind.webp";
+import madnessImage from "$assets/aspects/Madness.avif";
+import pandemoniumImage from "$assets/aspects/Pandemonium.avif";
+import reachImage from "$assets/aspects/Reach.avif";
+import resilienceImage from "$assets/aspects/Resilience.avif";
+import sunshineImage from "$assets/aspects/Sunshine.avif";
+import windImage from "$assets/aspects/Wind.avif";
+import immenseImage from "$assets/aspects/Immense.avif";
+import travelImage from "$assets/aspects/Travel.avif";
+import amorphousImage from "$assets/aspects/Amorphous.avif";
+import forebodingImage from "$assets/aspects/Foreboding.avif";
+import mightImage from "$assets/aspects/Might.avif";
 import type { ExpansionId } from "./expansions";
 import type { SpiritId } from "./spirits";
 
@@ -48,6 +53,7 @@ const ASPECTS_RAW = {
   immense: {
     name: "Immense",
     spirit: "lightnings",
+    imageUrl: immenseImage,
     expansion: "feather-flame",
     relativeComplexity: "higher",
     wikiTitle: "Immense",
@@ -70,6 +76,7 @@ const ASPECTS_RAW = {
   travel: {
     name: "Travel",
     spirit: "river",
+    imageUrl: travelImage,
     expansion: "feather-flame",
     relativeComplexity: "higher",
     wikiTitle: "Travel",
@@ -100,6 +107,7 @@ const ASPECTS_RAW = {
   foreboding: {
     name: "Foreboding",
     spirit: "shadows",
+    imageUrl: forebodingImage,
     expansion: "feather-flame",
     relativeComplexity: "higher",
     wikiTitle: "Foreboding",
@@ -107,6 +115,7 @@ const ASPECTS_RAW = {
   amorphous: {
     name: "Amorphous",
     spirit: "shadows",
+    imageUrl: amorphousImage,
     expansion: "feather-flame",
     relativeComplexity: "higher",
     wikiTitle: "Amorphous",
@@ -129,6 +138,7 @@ const ASPECTS_RAW = {
   might: {
     name: "Might",
     spirit: "vital",
+    imageUrl: mightImage,
     expansion: "feather-flame",
     relativeComplexity: "higher",
     wikiTitle: "Might",
