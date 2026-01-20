@@ -41,7 +41,7 @@ function Index() {
   const [state, dispatch] = useReducer(reducer, {
     players: [{ id: crypto.randomUUID() }, { id: crypto.randomUUID() }],
     spiritsPerPlayer: 2,
-    chooseAspects: true,
+    chooseAspects: false,
     expansions: new Set(DEFAULT_EXPANSIONS),
     complexities: new Set(COMPLEXITY_IDS),
   });
