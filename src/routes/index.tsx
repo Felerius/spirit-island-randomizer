@@ -176,7 +176,7 @@ function ExpansionLabel({ expansion }: { expansion: ExpansionId }): ReactNode {
   const { name, icon } = EXPANSIONS[expansion];
   return (
     <Stack direction="row" alignItems="center" gap={1}>
-      {icon && <SvgIcon fontSize="inherit" component={icon} inheritViewBox />}
+      <SvgIcon fontSize="inherit" component={icon} inheritViewBox />
       {name}
     </Stack>
   );
