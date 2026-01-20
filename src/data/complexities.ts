@@ -12,7 +12,4 @@ const COMPLEXITIES_RAW = {
 export const COMPLEXITIES: Record<ComplexityId, string> = COMPLEXITIES_RAW;
 export const COMPLEXITY_IDS = Object.keys(COMPLEXITIES_RAW) as ComplexityId[];
 
-export const COMPLEXITY_SCHEMA = z.enum([
-  COMPLEXITY_IDS[0],
-  ...COMPLEXITY_IDS.slice(1),
-]);
+export const COMPLEXITY_SCHEMA = z.enum(COMPLEXITY_IDS);
