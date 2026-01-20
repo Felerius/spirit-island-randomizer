@@ -3,7 +3,7 @@ FROM --platform=$BUILDPLATFORM node:24.13.0-alpine@sha256:931d7d57f8c1fd0e2179db
 WORKDIR /app
 RUN corepack enable
 
-COPY pnpm-lock.yaml /app
+COPY pnpm-lock.yaml pnpm-workspace.yaml /app
 RUN pnpm fetch
 
 COPY . /app
