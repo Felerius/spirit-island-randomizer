@@ -2,6 +2,7 @@ import * as z from "zod/mini";
 import spreadImage from "$assets/spirits/A_Spread_of_Rampant_Green.avif";
 import breathImage from "$assets/spirits/Breath_of_Darkness_Down_Your_Spine.avif";
 import bringerImage from "$assets/spirits/Bringer_of_Dreams_and_Nightmares.avif";
+import shardsImage from "$assets/spirits/Covets_Gleaming_Shards_of_Earth.avif";
 import dancesImage from "$assets/spirits/Dances_Up_Earthquakes.avif";
 import devouringImage from "$assets/spirits/Devouring_Teeth_Lurk_Underfoot.avif";
 import downpourImage from "$assets/spirits/Downpour_Drenches_the_World.avif";
@@ -26,6 +27,7 @@ import shadowsImage from "$assets/spirits/Shadows_Flicker_Like_Flame.avif";
 import fangsImage from "$assets/spirits/Sharp_Fangs_Behind_the_Leaves.avif";
 import shiftingImage from "$assets/spirits/Shifting_Memory_of_Ages.avif";
 import shroudImage from "$assets/spirits/Shroud_of_Silent_Mist.avif";
+import rotImage from "$assets/spirits/Spreading_Rot_Renews_the_Earth.avif";
 import starlightImage from "$assets/spirits/Starlight_Seeks_Its_Form.avif";
 import stonesImage from "$assets/spirits/Stone's_Unyielding_Defiance.avif";
 import whirlwindImage from "$assets/spirits/Sun-Bright_Whirlwind.avif";
@@ -314,6 +316,20 @@ const SPIRITS_RAW = {
     expansion: "nature-incarnate",
     complexity: "very-high",
     wikiTitle: "Dances_Up_Earthquakes",
+  }),
+  rot: spirit({
+    name: "Spreading Rot Renews the Earth",
+    imageUrl: rotImage,
+    expansion: "apocrypha",
+    complexity: "high",
+    wikiTitle: "Spreading_Rot_Renews_the_Earth",
+  }),
+  shards: spirit({
+    name: "Covets Gleaming Shards of Earth",
+    imageUrl: shardsImage,
+    expansion: "apocrypha",
+    complexity: "very-high",
+    wikiTitle: "Covets_Gleaming_Shards_of_Earth",
   }),
 } as const;
 
