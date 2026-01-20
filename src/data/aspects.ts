@@ -249,4 +249,4 @@ const ASPECTS_RAW = {
 
 export const ASPECTS: Record<AspectId, Aspect> = ASPECTS_RAW;
 export const ASPECT_IDS = Object.keys(ASPECTS) as AspectId[];
-export const ASPECT_SCHEMA = z.enum([ASPECT_IDS[0], ...ASPECT_IDS.slice(1)]);
+export const ASPECT_SCHEMA = z.enum(ASPECT_IDS);

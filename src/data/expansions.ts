@@ -25,7 +25,4 @@ const EXPANSIONS_RAW = {
 export const EXPANSIONS: Record<ExpansionId, Expansion> = EXPANSIONS_RAW;
 export const EXPANSION_IDS = Object.keys(EXPANSIONS) as ExpansionId[];
 
-export const EXPANSION_SCHEMA = z.enum([
-  EXPANSION_IDS[0],
-  ...EXPANSION_IDS.slice(1),
-]);
+export const EXPANSION_SCHEMA = z.enum(EXPANSION_IDS);

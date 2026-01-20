@@ -322,8 +322,8 @@ for (const id of ASPECT_IDS) {
   SPIRITS[ASPECTS[id].spirit].aspects.push(id);
 }
 
-export const SPIRIT_IDS = Object.keys(SPIRITS) as SpiritId[];
-export const SPIRIT_SCHEMA = z.enum([SPIRIT_IDS[0], ...SPIRIT_IDS.slice(1)]);
+const SPIRIT_IDS = Object.keys(SPIRITS) as SpiritId[];
+export const SPIRIT_SCHEMA = z.enum(SPIRIT_IDS);
 
 export function availableSpirits(
   expansions: Set<ExpansionId>,
