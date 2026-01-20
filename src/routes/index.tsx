@@ -25,7 +25,12 @@ import {
   COMPLEXITY_IDS,
   type ComplexityId,
 } from "$data/complexities";
-import { EXPANSION_IDS, EXPANSIONS, type ExpansionId } from "$data/expansions";
+import {
+  DEFAULT_EXPANSIONS,
+  EXPANSION_IDS,
+  EXPANSIONS,
+  type ExpansionId,
+} from "$data/expansions";
 import { availableSpirits } from "$data/spirits";
 
 export const Route = createFileRoute("/")({
@@ -37,7 +42,7 @@ function Index() {
     players: [{ id: crypto.randomUUID() }, { id: crypto.randomUUID() }],
     spiritsPerPlayer: 2,
     chooseAspects: true,
-    expansions: new Set(EXPANSION_IDS),
+    expansions: new Set(DEFAULT_EXPANSIONS),
     complexities: new Set(COMPLEXITY_IDS),
   });
 
