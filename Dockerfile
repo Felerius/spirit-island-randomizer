@@ -1,5 +1,5 @@
 # Our nodejs build is completely platform independent
-FROM --platform=$BUILDPLATFORM node:24.14.1-alpine@sha256:01743339035a5c3c11a373cd7c83aeab6ed1457b55da6a69e014a95ac4e4700b AS build
+FROM --platform=$BUILDPLATFORM node:24.20.0-alpine@sha256:e67514e5d0f6c46656005e1b693b2ec9d52e80b641307de684d4a015ba7a4eaf AS build
 WORKDIR /app
 RUN corepack enable
 
@@ -9,7 +9,7 @@ RUN pnpm fetch
 COPY . /app
 RUN pnpm install --offline && pnpm build
 
-FROM node:24.14.1-alpine@sha256:01743339035a5c3c11a373cd7c83aeab6ed1457b55da6a69e014a95ac4e4700b
+FROM node:24.20.0-alpine@sha256:e67514e5d0f6c46656005e1b693b2ec9d52e80b641307de684d4a015ba7a4eaf
 
 ENV NODE_ENV=production
 USER 1000
