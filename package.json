@@ -19,7 +19,7 @@
     "@mui/material": "7.3.9",
     "@tanstack/react-router": "1.168.10",
     "@tanstack/react-router-devtools": "1.166.11",
-    "@tanstack/react-start": "1.167.16",
+    "@tanstack/react-start": "1.168.60",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "remeda": "2.33.7",
